@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from recipe.views import AccessTokenOnlyView, PrivateGraphQLView
+from recipe.views import AccessTokenOnlyView, PrivateGraphQLView,CreateSuperUserView
 from django.views.decorators.csrf import csrf_exempt
 from recipe.schema import schema  
 
@@ -25,5 +25,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/token/", AccessTokenOnlyView.as_view(), name="token_obtain_pair"),   # POST username+password => access+refresh
     path("graphql/", csrf_exempt(PrivateGraphQLView.as_view(graphiql=True,  schema=schema))),
+    path("create-superuser/", CreateSuperUserView.as_view(), name="create-superuser"),
 
 ]
