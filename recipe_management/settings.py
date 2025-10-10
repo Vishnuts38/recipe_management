@@ -107,6 +107,7 @@ if os.getenv("DATABASE_URL"):  # production (Railway)
             default=os.getenv("DATABASE_URL")
         )
     }
+    print("Production database settings applied.",DATABASES)
 else:  # local development
     
     DATABASES = {
