@@ -1,0 +1,31 @@
+{% extends 'expenses/base.html' %}
+{% block title %}Add/Edit Expense • Expense Manager{% endblock %}
+{% block content %}
+<h1 class="text-xl font-semibold mb-4">Expense</h1>
+<form method="post" class="bg-white shadow rounded-lg p-6 space-y-4">
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Date</label>
+      {{ form.date }}
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Amount</label>
+      {{ form.amount }}
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Category</label>
+      {{ form.category }}
+    </div>
+    <div class="md:col-span-4">
+      <label class="block text-sm font-medium text-gray-700">Description</label>
+      {{ form.description }}
+    </div>
+  </div>
+  <div class="flex justify-end gap-3">
+    <a href="{% url 'expense_list' %}" class="px-4 py-2 text-sm rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50">Cancel</a>
+    <button class="px-4 py-2 text-sm rounded-md bg-indigo-600 text-white hover:bg-indigo-500" type="submit">Save</button>
+  </div>
+</form>
+{% endblock %}
