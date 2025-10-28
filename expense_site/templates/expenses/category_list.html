@@ -1,0 +1,23 @@
+{% extends 'expenses/base.html' %}
+{% block title %}Categories • Expense Manager{% endblock %}
+{% block content %}
+<div class="flex items-center justify-between mb-4">
+  <h1 class="text-xl font-semibold">Categories</h1>
+  <a href="{% url 'category_create' %}" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">Add category</a>
+</div>
+<div class="bg-white shadow rounded-lg overflow-hidden">
+  <ul class="divide-y divide-gray-200">
+    {% for c in categories %}
+    <li class="px-6 py-4 flex items-center justify-between">
+      <span class="text-gray-900">{{ c.name }}</span>
+      <div class="text-sm">
+        <a href="{% url 'category_update' c.pk %}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+        <a href="{% url 'category_delete' c.pk %}" class="ml-3 text-red-600 hover:text-red-900">Delete</a>
+      </div>
+    </li>
+    {% empty %}
+    <li class="px-6 py-8 text-center text-gray-500">No categories yet.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

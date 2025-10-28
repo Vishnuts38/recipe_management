@@ -1,0 +1,17 @@
+{% extends 'expenses/base.html' %}
+{% block title %}Add/Edit Category • Expense Manager{% endblock %}
+{% block content %}
+<h1 class="text-xl font-semibold mb-4">Category</h1>
+<form method="post" class="bg-white shadow rounded-lg p-6 space-y-4">
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+  <div>
+    <label class="block text-sm font-medium text-gray-700">Name</label>
+    {{ form.name }}
+  </div>
+  <div class="flex justify-end gap-3">
+    <a href="{% url 'category_list' %}" class="px-4 py-2 text-sm rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50">Cancel</a>
+    <button class="px-4 py-2 text-sm rounded-md bg-indigo-600 text-white hover:bg-indigo-500" type="submit">Save</button>
+  </div>
+</form>
+{% endblock %}
